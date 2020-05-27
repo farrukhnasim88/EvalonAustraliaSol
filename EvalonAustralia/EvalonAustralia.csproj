@@ -16,18 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Member\Controllers\" />
     <Folder Include="Areas\Member\Data\" />
     <Folder Include="Areas\Member\Models\" />
-    <Folder Include="Areas\Member\Views\" />
-    <Folder Include="Areas\Management\Controllers\" />
     <Folder Include="Areas\Management\Data\" />
     <Folder Include="Areas\Management\Models\" />
-    <Folder Include="Areas\Management\Views\" />
-    <Folder Include="Areas\Staff\Controllers\" />
     <Folder Include="Areas\Staff\Data\" />
     <Folder Include="Areas\Staff\Models\" />
-    <Folder Include="Areas\Staff\Views\" />
   </ItemGroup>
 
 </Project>
