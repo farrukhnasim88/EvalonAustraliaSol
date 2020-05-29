@@ -15,7 +15,7 @@ namespace EvalonAustralia.Models
         public string Mobile { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
-        public IEnumerable<Vehicles> Vehicles { get; set; }
+        public IEnumerable<Vehicle> Vehicles { get; set; }
 
 
 

@@ -85,22 +85,22 @@ namespace EvalonAustralia
             });
 
             //invoke the create role method
-            CreateUserRole(services).Wait();
+           // CreateUserRole(services).Wait();
         }
 
-        private async Task CreateUserRole(IServiceProvider serviceProvider)
-        {
-            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-            var roles = new string[] { "Manager", "Member", "Staff" };
-            foreach (var r in roles)
-            {
-                var exists = await roleManager.RoleExistsAsync(r);
-                if (!exists)
-                {
-                    var role = new IdentityRole(r);
-                    await roleManager.CreateAsync(role);
-                }
-            }
-        }
+        //private async Task CreateUserRole(IServiceProvider serviceProvider)
+        //{
+        //    var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+        //    var roles = new string[] { "Manager", "Member", "Staff" };
+        //    foreach (var r in roles)
+        //    {
+        //        var exists = await roleManager.RoleExistsAsync(r);
+        //        if (!exists)
+        //        {
+        //            var role = new IdentityRole(r);
+        //            await roleManager.CreateAsync(role);
+        //        }
+        //    }
+        //}
     }
 }
