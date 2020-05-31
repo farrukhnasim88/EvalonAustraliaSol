@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using EvalonAustralia.Data;
+using EvalonAustralia.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -125,6 +126,20 @@ namespace EvalonAustralia.Areas.Identity.Pages.Account
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         await _userManager.AddToRoleAsync(user, role);
+                       // var company = _context.Companies.First();
+                        var person = new Person
+                        {
+                            Id =int.Parse (user.Id),
+                            FirstName = Input.FirstName,
+                            LastName = Input.LastName,
+                            Email = Input.Email,
+                            Mobile = Input.Mobile
+                        };
+                        company.People.Add(person);
+                        await _context.SaveChangesAsync();
+
+
+
                         return LocalRedirect(returnUrl);
                     }
                 }

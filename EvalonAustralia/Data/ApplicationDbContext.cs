@@ -17,6 +17,7 @@ namespace EvalonAustralia.Data
 
         public DbSet<Person> People { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<Company> Companies { get; set; }
 
 
     }
