@@ -7,10 +7,7 @@
         public string Model { get; set; }
         public int Year { get; set; }
         public int Km { get; set; }
-
-
-
-
+        public Person Person { get; set; }
 
     }
 }

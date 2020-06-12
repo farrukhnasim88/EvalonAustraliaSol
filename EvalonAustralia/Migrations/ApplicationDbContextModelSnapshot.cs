@@ -4,16 +4,14 @@ using EvalonAustralia.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace EvalonAustralia.Data.Migrations
+namespace EvalonAustralia.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200529021622_InitialCreate")]
-    partial class InitialCreate
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,7 +19,7 @@ namespace EvalonAustralia.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("EvalonAustralia.Models.Person", b =>
+            modelBuilder.Entity("EvalonAustralia.Models.Company", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -30,6 +28,28 @@ namespace EvalonAustralia.Data.Migrations
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Companies");
+                });
+
+            modelBuilder.Entity("EvalonAustralia.Models.Person", b =>
+                {
+                    b.Property<string>("PersonId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CompanyId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -43,7 +63,9 @@ namespace EvalonAustralia.Data.Migrations
                     b.Property<string>("Mobile")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("PersonId");
+
+                    b.HasIndex("CompanyId");
 
                     b.ToTable("People");
                 });
@@ -64,8 +86,8 @@ namespace EvalonAustralia.Data.Migrations
                     b.Property<string>("Model")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PersonId")
-                        .HasColumnType("int");
+                    b.Property<string>("PersonId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Year")
                         .HasColumnType("int");
@@ -277,9 +299,16 @@ namespace EvalonAustralia.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("EvalonAustralia.Models.Person", b =>
+                {
+                    b.HasOne("EvalonAustralia.Models.Company", null)
+                        .WithMany("People")
+                        .HasForeignKey("CompanyId");
+                });
+
             modelBuilder.Entity("EvalonAustralia.Models.Vehicle", b =>
                 {
-                    b.HasOne("EvalonAustralia.Models.Person", null)
+                    b.HasOne("EvalonAustralia.Models.Person", "Person")
                         .WithMany("Vehicles")
                         .HasForeignKey("PersonId");
                 });

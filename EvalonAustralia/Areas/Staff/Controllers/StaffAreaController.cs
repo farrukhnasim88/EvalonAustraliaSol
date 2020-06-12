@@ -49,7 +49,7 @@ namespace EvalonAustralia.Areas.Staff.Controllers
         protected async Task<Person> GetMemberAsync()
         {
             var user = await GetIdentityUserAsync();
-            var person = await _context.People.FirstOrDefaultAsync(p => p.Id.Equals(user.Id));
+            var person = await _context.People.FirstOrDefaultAsync(p => p.PersonId.Equals(user.Id));
             return person;
         }
 

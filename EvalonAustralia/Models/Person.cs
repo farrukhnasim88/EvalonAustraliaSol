@@ -7,15 +7,19 @@ namespace EvalonAustralia.Models
 {
     public class Person
     {
+        public Person()
+        {
+            Vehicles = new List<Vehicle>();
+        }
         
 
-        public int Id { get; set; }
+        public string PersonId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Mobile { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
-        public IEnumerable<Vehicle> Vehicles { get; set; }
+        public List<Vehicle> Vehicles { get; set; }
 
 
 

@@ -91,7 +91,8 @@ namespace EvalonAustralia.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             var role = "Member";
-            //  var role = "Staff";
+             // var role = "Staff";
+             //var  role= "Manager";
             if (role == "Member")
                 returnUrl = Url.Content("~/Member/");
             else if (role == "Staff")
@@ -126,10 +127,10 @@ namespace EvalonAustralia.Areas.Identity.Pages.Account
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         await _userManager.AddToRoleAsync(user, role);
-                       // var company = _context.Companies.First();
+                       var company = _context.Companies.First();
                         var person = new Person
                         {
-                            Id =int.Parse (user.Id),
+                            PersonId =user.Id,
                             FirstName = Input.FirstName,
                             LastName = Input.LastName,
                             Email = Input.Email,
