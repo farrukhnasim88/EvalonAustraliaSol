@@ -10,13 +10,25 @@ namespace EvalonAustralia.Areas.Member.Controllers
 {
     public class HomeController : MemberAreaController
     {
-        public HomeController(UserManager<IdentityUser> userManager, ApplicationDbContext context) : base(userManager, context)
+
+        private readonly VehiclesService _vehicles;
+        public HomeController(UserManager<IdentityUser> userManager, ApplicationDbContext context, VehiclesService vehicles) : base(userManager, context)
         {
+            _vehicles = vehicles;
         }
 
         public IActionResult Index()
         {
             return View();
         }
+
+        public IActionResult ListVehicles()
+        {
+            var findAllVehicles = _vehicles.GetAllVehicles();
+            return View(findAllVehicles);
+        }
+
+
+
     }
 }
