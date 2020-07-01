@@ -6,6 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Management\Data\**" />
+    <Compile Remove="Areas\Staff\Data\**" />
+    <Content Remove="Areas\Management\Data\**" />
+    <Content Remove="Areas\Staff\Data\**" />
+    <EmbeddedResource Remove="Areas\Management\Data\**" />
+    <EmbeddedResource Remove="Areas\Staff\Data\**" />
+    <None Remove="Areas\Management\Data\**" />
+    <None Remove="Areas\Staff\Data\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.3" />
@@ -19,9 +30,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Member\Models\" />
-    <Folder Include="Areas\Management\Data\" />
     <Folder Include="Areas\Management\Models\" />
-    <Folder Include="Areas\Staff\Data\" />
     <Folder Include="Areas\Staff\Models\" />
   </ItemGroup>
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 using EvalonAustralia.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -18,6 +19,7 @@ namespace EvalonAustralia.Data
         public DbSet<Person> People { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<Company> Companies { get; set; }
+         
 
 
     }
